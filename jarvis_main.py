@@ -4,6 +4,8 @@ import requests
 from bs4 import BeautifulSoup
 import datetime
 import os
+import webbrowser
+import pyautogui
 
 engine = pyttsx3.init("sapi5")
 voices = engine.getProperty("voices")
@@ -19,7 +21,6 @@ def takeCommand():
         with speech_recognition.Microphone() as source:
             print("Listeing....")
             r.pause_threshold = 1
-            
             r.energy_threshold = 300
             audio = r.listen(source,0,4)
         
@@ -52,7 +53,10 @@ if __name__ == "__main__":
                 elif "how are you" in query:
                     speak("perfect sir")        
                 elif "thank you" in query:
-                    speak("you are welcome , sir")    
+                    speak("you are welcome , sir")  
+                    
+                elif "pause" in query:
+                    pyautogui      
                     
                 elif "open" in query:
                     from Dictapp import openappweb
@@ -95,4 +99,7 @@ if __name__ == "__main__":
                 elif "finally sleep" in query:
                     speak(f"ok sir, I am going to sleep now,.. if you need any kind of help please call me sir, ..I am always there for you sir...ok sir,... bye ")    
                     exit()
-                     
+                    
+                elif "hey jarvis would you like to do something for me" in query:
+                    speak(f"offcource..sir..  its my duty..sir  just tell me what would you like to do for you...")  
+           
